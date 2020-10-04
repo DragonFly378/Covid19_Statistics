@@ -1,0 +1,41 @@
+body {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a6c1ee));
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header {
+  background-color: cornflowerblue;
+  padding: 20px;
+  color: white;
+  margin-bottom: 60px;
+}
+
+.tablebody {
+  color: black;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: #cec2fb;
+}
+
+.dataTables_wrapper {
+  background-color: #ffffff !important;
+  border-radius: 11px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.section-footer {
+  font-family: 'Assistant';
+  padding: 10px;
+  background-color: #323a66;
+  color: azure;
+}
+
+.dataTables_paginate {
+  margin-bottom: 60px;
+}
+/*# sourceMappingURL=style.css.map */

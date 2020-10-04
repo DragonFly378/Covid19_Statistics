@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <title>Covid-19 Statistics</title>
+</head>
+<body>
+    
+    <section class="text-center header">
+         <h1>Covid-19 Statistics</h1>
+    </section>
+
+    <section class="container">
+        <table id="covidTable" class="table table-bordered table-dark">
+            
+            <thead class="thead-dark">
+                <tr>
+                    <th>Country</th>
+                    <th>TotalCases</th>
+                    <th>Recovered</th>
+                    <th>Deaths</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablebody" class="tablebody">
+
+            </tbody>
+
+        </table>
+    </section>
+
+    
+    <section class="footer justify-content-center text-center section-footer">
+        <p style="margin-top: 15px;">Designed and Developed By Muhammad Hafiz HIsbullah</p>
+        <p style="margin-top: -15px;">Copyright &#169 2020, API by <a style="color: rgb(255, 153, 0);" target="blank" href="https://documenter.getpostman.com/view/10808728/SzS8rjbc">getPostman</a> </p>
+        
+
+    </section>
+
+</body>
+</html>
+
+<script>
+
+    var countries = []
+
+    $.ajax({
+
+        url:"https://api.covid19api.com/summary",
+        type: 'get',
+        dataType : "json",
+
+        success:function(response){
+            countries = response.Countries;
+            updatetable(countries);
+        },
+        error:function(error){
+            console.log(error);
+        },
+        always:{}
+    })
+
+    updatetable = (countries) =>
+    {
+
+            for(country of countries)
+            {
+
+                var newrow = "<tr><td>"+country.Country+"</td><td>"+country.TotalConfirmed+"</td><td>"+
+                    country.TotalRecovered+"</td><td>"+country.TotalDeaths+"</td></tr>"
+
+                $("#tablebody").append(newrow)
+            }
+            $("#covidTable").DataTable();
+    }
+
+
+</script>
